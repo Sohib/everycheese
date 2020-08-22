@@ -8,6 +8,7 @@ from model_utils.models import TimeStampedModel
 class Cheese(TimeStampedModel):
     class Firmness(models.TextChoices):
         UNSPECIFIED = "unspecified", "Unspecified"
+        SOFT = "soft", "Soft"
         SEMI_SOFT = "semi-soft", "Semi-Soft"
         SEMI_HARD = "semi-hard", "Semi-Hard"
         HARD = "hard", "Hard"
