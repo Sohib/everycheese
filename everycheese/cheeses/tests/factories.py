@@ -1,9 +1,22 @@
 import factory
 import factory.fuzzy
+import pytest
 from slugify import slugify
 
 from ..models import Cheese
 from everycheese.users.tests.factories import UserFactory
+
+
+@pytest.fixture
+def cheese():
+    """Get new Cheese"""
+    return CheeseFactory()
+
+
+@pytest.fixture
+def user():
+    """ Get new User """
+    return UserFactory()
 
 
 class CheeseFactory(factory.django.DjangoModelFactory):

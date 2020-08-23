@@ -1,0 +1,34 @@
+import pytest
+
+from django.urls import reverse, resolve
+
+from everycheese.cheeses.tests.factories import CheeseFactory,cheese
+
+pytestmark = pytest.mark.django_db
+
+
+def test_list_reverese():
+    """cheeses:list should reverse to /cheeses/."""
+    return reverse('cheeses:list') == '/cheeses/'
+
+
+def test_list_resolve():
+    """/cheeses/ should resolve to cheeses:list."""
+    assert resolve("/cheeses/").view_name == 'cheeses:list'
+
+
+def test_add_reverse():
+    """cheeses:add should reverse to /cheeses/add/."""
+    assert reverse('cheeses:add') == '/cheeses/add/'
+
+
+def test_add_resolve():
+    """/cheeses/add/ should resolve to cheeses:add."""
+    assert resolve('/cheeses/add/').view_name == 'cheeses:add'
+
+
+def test_detail_reverse(cheese):
+    """cheeses:detail should reverse to /cheeses/cheeseslug/."""
+    url = reverse('cheeses:detail', kwargs={'slug': cheese.slug})
+    assert url == f'/cheeses/{cheese.slug}'
+
